@@ -1,0 +1,50 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+body > .container {
+  padding: 60px 15px 0
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.divider-horizontal {
+  height: 1px;
+  width: 100%;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+
+ul.header > li.list-group-item > a {
+  margin-left: 20px;
+}
+
+ul.header > li.list-group-item > a > i.fa::before{
+  padding-right: 5px;
+}
+
+.panel-title a .fa-chevron:after {
+  font-family: FontAwesome;
+  content: "\f077";
+}
+
+.panel-title a.collapsed .fa-chevron:after {
+  font-family: FontAwesome;
+  content: "\f078";
+}
+
+.btn-vertical {
+  margin-bottom: 2px;
+}

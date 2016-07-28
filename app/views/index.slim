@@ -1,0 +1,145 @@
+div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"
+  div class="panel panel-primary"
+    div class="panel-heading" role="tab" id="headingStats"
+      h4 class="panel-title"
+        a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseStats" aria-expanded="true" aria-controls="collapseStats"
+          i class="fa fa-chevron fa-fw"
+          = I18n.t('database_stats.database_stats')
+    div id="collapseStats" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingStats"
+      div class="panel-body"
+        table class="table table-bordered table-striped"
+          tr
+            td class="col-md-2"
+              strong = I18n.t('server_status.hostname')
+            td class="col-md-3"
+              = @info['host']
+            td class="col-md-2"
+              strong = I18n.t('server_status.mongodb_version')
+            td class="col-md-3"
+              = @info['version']
+          tr
+            td class="col-md-2"
+              strong = I18n.t('server_status.uptime')
+            td class="col-md-3"
+              = distance_of_time_in_words(@info['uptime'])
+            td class="col-md-2"
+              strong = I18n.t('server_status.server_time')
+            td class="col-md-3"
+              = @info['localTime']
+
+          tr
+            td colspan="4" &nbsp;
+
+          tr
+            td class="col-md-2"
+              strong = I18n.t('server_status.current_connections')
+            td class="col-md-3"
+              = @info['connections']['current']
+            td class="col-md-2"
+              strong = I18n.t('server_status.available_connections')
+            td class="col-md-3"
+              = @info['connections']['available']
+          tr
+            td class="col-md-2"
+              strong = I18n.t('server_status.active_clients')
+            td class="col-md-3"
+              = @info['globalLock']['activeClients']['total']
+            td class="col-md-2"
+              strong = I18n.t('server_status.queued_operations')
+            td class="col-md-3"
+              = @info['globalLock']['currentQueue']['total']
+          tr
+            td class="col-md-2"
+              strong = I18n.t('server_status.clients_reading')
+            td class="col-md-3"
+              = @info['globalLock']['activeClients']['readers']
+            td class="col-md-2"
+              strong = I18n.t('server_status.clients_writing')
+            td class="col-md-3"
+              = @info['globalLock']['activeClients']['writers']
+          tr
+            td class="col-md-2"
+              strong = I18n.t('server_status.read_lock_queue')
+            td class="col-md-3"
+              = @info['globalLock']['currentQueue']['readers']
+            td class="col-md-2"
+              strong = I18n.t('server_status.write_lock_queue')
+            td class="col-md-3"
+              = @info['globalLock']['currentQueue']['writers']
+
+          tr
+            td colspan="4" &nbsp;
+
+          / backgroundFlushing information only appears for instances that use the MMAPv1 storage engine.
+          /tr
+            td class="col-md-2"
+              strong = I18n.t('server_status.disk_flushes')
+            td class="col-md-3"
+              = @info['backgroundFlushing']['flushes']
+            td class="col-md-2"
+              strong = I18n.t('server_status.last_flush')
+            td class="col-md-3"
+              = @info['backgroundFlushing']['last_finished']
+          /tr
+            td class="col-md-2"
+              strong = I18n.t('server_status.time_spent_flushing')
+            td class="col-md-3"
+              | #{@info['backgroundFlushing']['total_ms']} ms
+            td class="col-md-2"
+              strong = I18n.t('server_status.average_flush_time')
+            td class="col-md-3"
+              | #{@info['backgroundFlushing']['average_ms']} ms
+
+          tr
+            td colspan="4" &nbsp;
+
+          tr
+            td class="col-md-2"
+              strong = I18n.t('server_status.total_inserts')
+            td class="col-md-3"
+              = @info['opcounters']['insert']
+            td class="col-md-2"
+              strong = I18n.t('server_status.total_queries')
+            td class="col-md-3"
+              = @info['opcounters']['query']
+          tr
+            td class="col-md-2"
+              strong = I18n.t('server_status.total_updates')
+            td class="col-md-3"
+              = @info['opcounters']['update']
+            td class="col-md-2"
+              strong = I18n.t('server_status.total_deletes')
+            td class="col-md-3"
+              = @info['opcounters']['delete']
+
+h2 = I18n.t('current_ops')
+table class="table table-bordered table-striped table-condensed"
+    tr
+      th
+      th
+        h4 = I18n.t('op_id')
+      th
+        h4 = I18n.t('secs_running')
+      th
+        h4 = I18n.t('namespace')
+      th
+        h4 = I18n.t('num_yields')
+      th
+        h4 = I18n.t('query')
+    - @operations.each do |op|
+        tr
+          td
+            form method="POST" action="/ops/#{op['connectionId']}"
+              input type="hidden" name="_method" value="delete"
+              button type="submit" class="btn btn-danger btn-block btn-sm killOperation"
+                = I18n.t('kill')
+          td
+            = op['opid']
+          td
+            = op['secs_running']
+          td
+            = op['ns']
+          td
+            = op['numYields']
+          td
+            = op['query'].to_s
