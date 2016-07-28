@@ -1,1 +1,3 @@
 *.json
+nohup.out
+start.sh

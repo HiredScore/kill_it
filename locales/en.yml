@@ -10,7 +10,7 @@ en:
   current_ops: 'Current Database Operations'
   op_id: 'ID'
   op_id_killed: "Sent a kill command to operation id <strong>%{op_id}</strong>"
-  secs_running: 'Sec Running'
+  secs_running: 'Sec running'
   query: 'Query'
   view_database: 'View Database'
   viewing_database: "Viewing Database: %{database}"
