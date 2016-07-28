@@ -18,8 +18,14 @@ module MongoAdmin
 
     delete '/ops/:operation_id' do
       admin_client = @db.client.use('admin')
-      op_id = params['operation_id']
-      admin_client.command(killOp: 456, op: op_id).find().first
+      op_id = params['operation_id'].to_i
+      if op_id < 0
+        # https://jira.mongodb.org/browse/SERVER-23066
+        # mongodb killOp not working with negative numbers.
+        # This will basically convert the signed int to unsigned int
+        op_id = op_id % 2**32
+      end
+      admin_client.command(killOp: 1, op: op_id).first
 
       flash[:info] = I18n.t('op_id_killed', op_id: op_id)
       redirect "/"

@@ -129,7 +129,7 @@ table class="table table-bordered table-striped table-condensed"
     - @operations.each do |op|
         tr
           td
-            form method="POST" action="/ops/#{op['connectionId']}"
+            form method="POST" action="/ops/#{op['opid']}"
               input type="hidden" name="_method" value="delete"
               button type="submit" class="btn btn-danger btn-block btn-sm killOperation"
                 = I18n.t('kill')
