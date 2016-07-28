@@ -1,25 +1,26 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    actionview (5.0.0)
-      activesupport (= 5.0.0)
+    actionview (4.2.7)
+      activesupport (= 4.2.7)
       builder (~> 3.1)
       erubis (~> 2.7.0)
-      rails-dom-testing (~> 2.0)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    activesupport (5.0.0)
-      concurrent-ruby (~> 1.0, >= 1.0.2)
+    activesupport (4.2.7)
       i18n (~> 0.7)
+      json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     bson (3.2.6)
     builder (3.2.2)
     coderay (1.1.1)
-    concurrent-ruby (1.0.2)
     erubis (2.7.0)
     git-version-bump (0.15.1)
     hashie (3.4.4)
     i18n (0.7.0)
+    json (1.8.3)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     method_source (0.8.2)
@@ -42,9 +43,12 @@ GEM
       rack (~> 1.4)
     rack-protection (1.5.3)
       rack
-    rails-dom-testing (2.0.1)
-      activesupport (>= 4.2.0, < 6.0)
+    rails-deprecated_sanitizer (1.0.3)
+      activesupport (>= 4.2.0.alpha)
+    rails-dom-testing (1.0.7)
+      activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
+      rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
     sinatra (1.4.7)
@@ -67,7 +71,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actionview
+  actionview (~> 4.2)
   hashie
   i18n
   mongo (~> 2.1.1)
