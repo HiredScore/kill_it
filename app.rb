@@ -42,7 +42,7 @@ module MongoAdmin
       I18n.enforce_available_locales = false
     end
 
-    before /^(?!\/(error|locale))/ do
+    before do
       begin
         @db = DB.new(settings.config_file)
       rescue => err

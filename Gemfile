@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'actionview', '~> 4.2'
+gem 'actionview', '~> 5.2'
 gem 'mongo', '~> 2.1.1'
 gem 'puma'
 gem 'sinatra'
