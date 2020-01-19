@@ -3,7 +3,6 @@ module MongoAdmin
 
     get '/' do
       info = @db.client.command(serverStatus: 1)
-      
       admin_client = @db.client.use('admin')
       @operations = admin_client.command(currentOp: 1).documents.first
       if @operations
@@ -11,7 +10,7 @@ module MongoAdmin
               op.fetch('secs_running', 0) < 5 || op['ns'] =~ /^local/
            end
       end
-      
+
       @info = info.documents.first
       slim :index
     end

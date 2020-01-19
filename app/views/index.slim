@@ -123,6 +123,8 @@ table class="table table-bordered table-striped table-condensed"
       th
         h4 = I18n.t('namespace')
       th
+        h4 = I18n.t('client')
+      th
         h4 = I18n.t('num_yields')
       th
         h4 = I18n.t('query')
@@ -139,6 +141,8 @@ table class="table table-bordered table-striped table-condensed"
             = op['secs_running']
           td
             = op['ns']
+          td
+            = op['client']
           td
             = op['numYields']
           td
