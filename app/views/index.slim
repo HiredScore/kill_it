@@ -121,6 +121,8 @@ table class="table table-bordered table-striped table-condensed"
       th
         h4 = I18n.t('secs_running')
       th
+        h4 = I18n.t('con_id')
+      th
         h4 = I18n.t('namespace')
       th
         h4 = I18n.t('client')
@@ -139,6 +141,8 @@ table class="table table-bordered table-striped table-condensed"
             = op['opid']
           td
             = op['secs_running']
+          td
+            = op['desc']
           td
             = op['ns']
           td

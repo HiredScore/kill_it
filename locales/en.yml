@@ -10,6 +10,7 @@ en:
   namespace: 'Namespace'
   current_ops: 'Current Database Operations'
   op_id: 'ID'
+  con_id: 'Connection'
   op_id_killed: "Sent a kill command to operation id <strong>%{op_id}</strong>"
   secs_running: 'Sec running'
   query: 'Query'
