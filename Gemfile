@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'actionview', '~> 5.2'
 gem 'mongo', '~> 2.11.3'
-gem 'puma', '~>4.3.1'
+gem 'puma', '~>4.3.5'
 gem 'sinatra'
 gem 'sinatra-flash'
 gem 'slim'
