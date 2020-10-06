@@ -24,11 +24,11 @@ module MongoAdmin
       port = @config.mongodb.port || 27017
 
       conn_str = "mongodb://"
-      if @config.mongodb.user
+      if @config.mongodb.user.present?
         conn_str +="#{@config.mongodb.user}:#{@config.mongodb.password}@"
       end
-      conn_str =  "#{conn_str}#{host}:#{port}"
-      @client = Mongo::Client.new(conn_str, database: 'admin')
+      conn_str =  "#{conn_str}#{host}:#{port}/#{database}?maxPoolSize=10"
+      @client = Mongo::Client.new(conn_str)
       return true
     end
 

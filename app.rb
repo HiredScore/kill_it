@@ -43,11 +43,7 @@ module MongoAdmin
     end
 
     before do
-      begin
         @db = DB.new(settings.config_file)
-      rescue => err
-        redirect '/error'
-      end
     end
 
     after do

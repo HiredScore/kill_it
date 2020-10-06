@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'actionview', '~> 5.2'
-gem 'mongo', '~> 2.11.3'
-gem 'puma', '~>4.3.1'
+gem 'actionview', '~> 6.0'
+gem 'mongo', '~> 2.1'
+gem 'puma', '~> 5.0'
 gem 'sinatra'
 gem 'sinatra-flash'
 gem 'slim'
