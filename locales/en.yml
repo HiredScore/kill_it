@@ -47,3 +47,6 @@ en:
     data_size: 'Data Size'
     storage_size: 'Storage Size'
     file_size: 'File Size (on disk)'
+  datetime:
+    distance_in_words:
+      x_days: "%{count} days"

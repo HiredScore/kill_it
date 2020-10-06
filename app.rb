@@ -33,10 +33,10 @@ module MongoAdmin
       set :root, (settings.root || File.dirname(__FILE__))
       set :config_file, JSON.load(File.open("config_#{ENV['RACK_ENV']}.json"))
       set :method_override, true
-      set :locale, I18n.default_locale
+      set :locale, 'en'
 
       I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
-      I18n.locale = I18n.default_locale
+      I18n.locale = 'en'
       I18n.load_path = Dir[File.join(settings.root, 'locales', '*.yml')]
       I18n.backend.load_translations
       I18n.enforce_available_locales = false
