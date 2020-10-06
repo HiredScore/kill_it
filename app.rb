@@ -34,6 +34,8 @@ module MongoAdmin
       set :config_file, JSON.load(File.open("config_#{ENV['RACK_ENV']}.json"))
       set :method_override, true
       set :locale, 'en'
+      set :db, DB.new(settings.config_file)
+
 
       I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
       I18n.locale = 'en'
@@ -42,13 +44,6 @@ module MongoAdmin
       I18n.enforce_available_locales = false
     end
 
-    before do
-        @db = DB.new(settings.config_file)
-    end
-
-    after do
-      @db.client.close if @db
-    end
 
     enable :sessions
 

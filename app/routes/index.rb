@@ -2,8 +2,8 @@ module MongoAdmin
   class App < Sinatra::Base
 
     get '/' do
-      info = @db.client.command(serverStatus: 1)
-      admin_client = @db.client.use('admin')
+      info = settings.db.client.command(serverStatus: 1)
+      admin_client = settings.db.client.use('admin')
       @operations = admin_client.command(currentOp: 1).documents.first
       if @operations
           @operations = @operations['inprog'].reject! do |op|
@@ -16,7 +16,7 @@ module MongoAdmin
     end
 
     delete '/ops/:operation_id' do
-      admin_client = @db.client.use('admin')
+      admin_client = settings.db.client.use('admin')
       op_id = params['operation_id'].to_i
       admin_client.command(killOp: 1, op: op_id).first
 
