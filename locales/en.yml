@@ -50,3 +50,5 @@ en:
   datetime:
     distance_in_words:
       x_days: "%{count} days"
+      x_months: "%{count} months"
+      x_years: "%{count} years"
