@@ -7,7 +7,7 @@ module MongoAdmin
       @operations = admin_client.command(currentOp: 1).documents.first
       if @operations
           @operations = @operations['inprog'].reject! do |op|
-              op.fetch('secs_running', 0) < 5 || op['ns'] =~ /^local/
+              op.fetch('secs_running', 0) < 3 || op['ns'] =~ /^local/
            end
       end
 
