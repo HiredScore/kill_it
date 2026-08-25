@@ -16,9 +16,7 @@
 ##########################
 tools_config:
   sast:
-    rulesets:
-    - p/python
-    - p/terraform
+    rulesets: []
   sca: {}
   secrets:
     # To set this to false,
