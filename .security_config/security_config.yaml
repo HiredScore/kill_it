@@ -1,0 +1,4 @@
+# Security Configuration
+version: 1.0
+security:
+  scans_enabled: true
